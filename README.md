@@ -1,7 +1,7 @@
 # dotfiles
 
 ```
-$ git clone git@github.com:yymm/dotfiles.git
-$ cd dotfiles
+$ git clone git@github.com:souron-sansei/dotfiles-ubuntu.git
+$ cd dotfiles-ubuntu
 $ bash bootstrap.sh
 ```
