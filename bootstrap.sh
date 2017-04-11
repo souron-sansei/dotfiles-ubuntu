@@ -9,34 +9,34 @@ done
 ln -s -i $HOME/.dotfiles/config/nvim $HOME/.config/
 
 # Neobundle
-[ ! -d ~/.vim/bundle ] && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-[ ! -d ~/.vim/bundle/vimproc.vim ] && git clone git@github.com:Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
+#[ ! -d ~/.vim/bundle ] && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+#[ ! -d ~/.vim/bundle/vimproc.vim ] && git clone git@github.com:Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
 
-case "${OSTYPE}" in
+#case "${OSTYPE}" in
 # Mac(Unix)
-darwin*)0
-    cd ~/.vim/bundle/vimproc.vim && make -f make_mac.mak
-    ;;  
+#darwin*)0
+#    cd ~/.vim/bundle/vimproc.vim && make -f make_mac.mak
+#    ;;  
 # Linux
-linux*)
-    cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
-    ;;  
-esac
+#linux*)
+#    cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
+#    ;;  
+#esac
 
-vim -u ~/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s -V1
+#vim -u ~/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s -V1
 
-function askYesOrNo {
-  MSG=$1
-  while :
-  do
-    echo -n "${MSG} y/N: "
-    read ans
-    case $ans in
-    [yY]) return 0 ;;
-    [nN]) return 1 ;;
-    esac
-  done
-}
+#function askYesOrNo {
+#  MSG=$1
+#  while :
+#  do
+#    echo -n "${MSG} y/N: "
+#    read ans
+#    case $ans in
+#    [yY]) return 0 ;;
+#    [nN]) return 1 ;;
+#    esac
+#  done
+#}
 
 #askYesOrNo ">>> GUI?"
 #if [ $? -eq 0 ]; then
