@@ -6,7 +6,7 @@ do
 done
 
 #NeoVim
-ln -s -i $HOME/dotfiles-ubuntu/config/nvim $HOME/.config/
+ln -s -i $HOME/dotfiles-ubuntu/.config/nvim $HOME/.config/
 #ln -nsf ~/.dotfiles/config/nvim ~/.config/
 
 # Neobundle
