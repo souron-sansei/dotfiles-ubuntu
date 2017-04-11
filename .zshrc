@@ -41,7 +41,7 @@ colors
 #Prompt
 if [ -e /etc/lsb-release ]; then 
 	# Kawaii
-	PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*╹◡╹)!(*;_;%)).｡o(Ubuntu) %F{gray}[%f%F{magenta}%~%f%1(v|%F{cyan}%1v%f|)] %#%{${reset_color}%} "
+	PROMPT="%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(*╹◡╹)!(*;_;%)).｡o(Docker) %F{gray}[%f%F{magenta}%~%f%1(v|%F{cyan}%1v%f|)] %#%{${reset_color}%} "
 	PROMPT2="%{$fg[blue]%}%_>%{$reset_color%a}%b "
 	setopt correct
 	SPROMPT="%{$fg[red]%}%{$suggest%}(*╹-╹)? %b %r is correct? [n,y,a,e]:%{${reset_color}%}%b "
@@ -71,7 +71,7 @@ fi
 # Alias
 alias ls='ls -G'
 # PATH
-PATH=/Users/yano/.pyenv/shims:$PATH:~/.bin
+PATH=$PATH:~/.bin
 # no beep
 setopt nolistbeep
 # useful functions
