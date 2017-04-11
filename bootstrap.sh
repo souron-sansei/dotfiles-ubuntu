@@ -2,11 +2,12 @@ DOT_FILES=( .zshrc .zshrc.env .gitconfig .screenrc .vimrc .vim .tmux.conf .tmux-
 
 for file in ${DOT_FILES[@]}
 do
-	ln -s -i $HOME/.dotfiles/$file $HOME/$file
+	ln -s -i $HOME/dotfiles-ubuntu/$file $HOME/$file
 done
 
 #NeoVim
-ln -s -i $HOME/.dotfiles/config/nvim $HOME/.config/
+ln -s -i $HOME/dotfiles-ubuntu/config/nvim $HOME/.config/
+#ln -nsf ~/.dotfiles/config/nvim ~/.config/
 
 # Neobundle
 #[ ! -d ~/.vim/bundle ] && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
