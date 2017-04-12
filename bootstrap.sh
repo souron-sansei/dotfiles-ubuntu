@@ -11,8 +11,8 @@ ln -s -i $HOME/dotfiles-ubuntu/.config/nvim $HOME/.config/
 #ln -nsf ~/.dotfiles/config/nvim ~/.config/
 
 # Neobundle
-[ ! -d ~/.vim/bundle ] && git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-[ ! -d ~/.vim/bundle/vimproc.vim ] && git clone git@github.com:Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
+[ ! -d ~/.vim/bundle ] && git clone http://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+[ ! -d ~/.vim/bundle/vimproc.vim ] && git clone http://github.com:Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
 
 #case "${OSTYPE}" in
 # Mac(Unix)
