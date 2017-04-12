@@ -6,6 +6,7 @@ do
 done
 
 #NeoVim
+dir=$HOME/.config; [ ! -e $dir ] && mkdir -p $dir
 ln -s -i $HOME/dotfiles-ubuntu/.config/nvim $HOME/.config/
 #ln -nsf ~/.dotfiles/config/nvim ~/.config/
 
