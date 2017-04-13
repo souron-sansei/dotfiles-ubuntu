@@ -41,7 +41,7 @@ colors
 #Prompt
 if [ -e /etc/lsb-release ]; then 
 	# Kawaii
-	PROMPT="%F{gray}[%f%F{magenta}%~%f%1(v|%F{cyan}%1v%f|)] %{${reset_color}%} 
+	PROMPT="%{${fg[green]}%}[%n@%m]%F{gray}[%f%F{magenta}%~%f%1(v|%F{cyan}%1v%f|)] %{${reset_color}%} 
 		%(?.%{$fg[green]%}.%{$fg[blue]%})%(?!(OK)!(NG%)) >${reset_color}%} "
 	PROMPT2="%{$fg[blue]%}%_>%{$reset_color%a}%b "
 	setopt correct
