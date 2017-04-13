@@ -11,8 +11,8 @@ ln -s -i $HOME/dotfiles-ubuntu/.config/nvim $HOME/.config/
 #ln -nsf ~/.dotfiles/config/nvim ~/.config/
 
 # Neobundle
-[ ! -d ~/.vim/bundle ] && git clone https://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
-[ ! -d ~/.vim/bundle/vimproc.vim ] && git clone https://github.com/Shougo/vimproc.vim.git ~/.vim/bundle/vimproc.vim
+[ ! -d $HOME/.vim/bundle ] && git clone https://github.com/Shougo/neobundle.vim.git $HOME/.vim/bundle/neobundle.vim
+[ ! -d $HOME/.vim/bundle/vimproc.vim ] && git clone https://github.com/Shougo/vimproc.vim.git $HOME/.vim/bundle/vimproc.vim
 
-cd ~/.vim/bundle/vimproc.vim && make -f make_unix.mak
-vim -u ~/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s -V1
+cd $HOME/.vim/bundle/vimproc.vim && make -f make_unix.mak
+vim -u $HOME/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s -V1
