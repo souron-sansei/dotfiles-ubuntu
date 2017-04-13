@@ -16,3 +16,15 @@ ln -s -i $HOME/dotfiles-ubuntu/.config/nvim $HOME/.config/
 
 cd $HOME/.vim/bundle/vimproc.vim && make -f make_unix.mak
 vim -u $HOME/.vimrc -i NONE -c "try | NeoBundleUpdate! | finally | q! | endtry" -e -s -V1
+function askYesOrNo {
+  MSG=$1
+  while :
+  do
+    echo -n "${MSG} y/N: "
+    read ans
+    case $ans in
+    [yY]) return 0 ;;
+    [nN]) return 1 ;;
+    esac
+  done
+}
