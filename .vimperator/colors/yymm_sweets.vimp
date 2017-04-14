@@ -7,7 +7,7 @@ hi Hint font-family: monospace; font-size: 14px; font-weight: normal; color: lig
 hi HintElem background-color: MediumPurple; color: black;
 hi HintActive background-color: hotpink; color: white;
 
-" âe(èdÇ©Ç¡ÇΩÇÁÉRÉÅÉìÉgÉAÉEÉgÇÀÇ¡ÅI)
+" ÂΩ±(Èáç„Åã„Å£„Åü„Çâ„Ç≥„É°„É≥„Éà„Ç¢„Ç¶„Éà„Å≠„Å£ÔºÅ)
 hi -append Hint background-color: rgba(28, 28, 28, 0.7); border: 1px solid #1c1c1c; -moz-border-radius: 4px; -moz-box-shadow: 0px 0px 1px black; text-shadow: 1px 1px 2px black;
 hi -append HintElem text-decoration: none; -moz-border-radius: 4px; -moz-box-shadow: 0 0 2px #0c0c0c;
 hi -append HintActive text-decoration: none; -moz-border-radius: 4px; -moz-box-shadow: 0 0 2px #0c0c0c;
