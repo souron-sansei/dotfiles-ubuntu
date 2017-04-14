@@ -1,7 +1,6 @@
 /*** BEGIN LICENSE BLOCK {{{
     Copyright (c) 2008 suVene<suvene@zeromemory.info>
     Copyright (c) 2008-2011 anekos<anekos@snca.net>
-
     distributable under the terms of an MIT-style license.
     http://www.opensource.jp/licenses/mit-license.html
 }}}  END LICENSE BLOCK ***/
@@ -24,13 +23,11 @@ var PLUGIN_INFO = xml`
 - liberator.plugins.libly.Request
 - liberator.plugins.libly.Response
 - liberator.plugins.libly.Wedata
-
 == Logger ==
 getLogger(prefix):
     log(msg, level), echo(msg, flg), echoerr(msg)
     のメソッドを持つ logger インスタンスを取得します。
     ログの書式は prefix + ': ' + yyyy/MM/dd + msg となります。
-
 == Object Utility ==
 extend(dst, src):
     オブジェクトを拡張します。
@@ -70,7 +67,6 @@ dateFormat(dtm, fmt):
     fmt を省略した場合、"%y/%M/%d %h:%m:%s" となります。
 runnable(generator):
     gererator を実行し、再帰的に resume する為の引数を渡します。
-
 ==  Browser ==
 getSelectedString:
     window の選択文字列を返却します。
@@ -78,13 +74,11 @@ getUserAndPassword(hostname, formSubmitURL, username):
     login-manager から [username, password] を取得します。
     引数の username が省略された場合、検索された 1件目を返却します。
     データが存在しない場合は、null を返却します。
-
 == System ==
 readDirectory(path, fileter, func):
     path で指定したディレクトリから、filter で指定された正規表現に match する場合、
     func をファイル名を引数にコールバックします。
     filter は Function を指定することも可能です。
-
 == HTML, XML, DOM, E4X ==
 pathToURL(a, baseURL, doc):
     相対パスを絶対パスに変換します。
@@ -115,7 +109,6 @@ toStyleText(style):
         left: 10px;
     ||<
     のような文字列に変換します。
-
 == Object Request ==
 Request(url, headers, options):
     コンストラクタ
@@ -135,7 +128,6 @@ Request(url, headers, options):
             'Content-type': 'application/x-www-form-urlencoded; charset=' + options.encodingの値
         }
         ||<
-
     options:
         オプションとして以下のようなオブジェクトを指定できる（省略可）
         asynchronous:
@@ -164,7 +156,6 @@ get():
     GETメソッドによりHTTPリクエストを発行する。
 post():
     POSTメソッドによりHTTPリクエストを発行する。
-
 == Object Response ==
 HTTPレスポンスを表すオブジェクト
 req:
@@ -179,7 +170,6 @@ getStatusText():
     ステータを表す文字列を取得する
 getHTMLDocument(xpath, xmlns, ignoreTags, callback, thisObj):
     レスポンスからHTMLDocumentオブジェクトを生成し、xpath を評価した結果の snapshot の配列を返す
-
 == Object Wedata ==
 ~/vimperator/info/profile_name/plugins-libly-wedata-?????
 に store されます。
@@ -188,7 +178,6 @@ getItems(expire, itemCallback, finalCallback):
 === TODO ===
 clearCache:
   wedata 読込み成功したら、強制的にキャッシュと置き換えるの作って！
-
     ]]></detail>
 </VimperatorPlugin>`;
 */
@@ -734,4 +723,3 @@ libly.Wedata.prototype = {
 
 //}
 // vim: set fdm=marker sw=4 ts=4 sts=0 et:
-
