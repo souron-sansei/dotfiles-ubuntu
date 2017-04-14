@@ -135,7 +135,6 @@ let INFO = xml`
     </code>
     and you will get the page to authorize Twittperator to access Twitter in a new tab.
     If you allow and you will get the PIN (7 digit numbers), then yank it.
-
     Secondarily, authorize Twittperator with your PIN.
     <code>
         :tw -setPIN yanked_PIN
@@ -200,7 +199,6 @@ let INFO = xml`
         <p>PINcodeを設定します。</p>
       </description>
     </item>
-
     <item>
       <spec>:tw<oa>ittperator</oa></spec>
       <description>
@@ -286,7 +284,6 @@ let INFO = xml`
     </code>
     を実行すると新規タブに本アプリケーションを許可するかを問うページが開かれます。
     許可をすると、PINコード(数値)が表示されるのでコピーしてください。
-
     <code>
         :tw -setPIN コピーしたPINコード
     </code>
@@ -396,16 +393,13 @@ let INFO = xml`
      */
 
     /* Here's some JavaScript software for implementing OAuth.
-
        This isn't as useful as you might hope.  OAuth is based around
        allowing tools and websites to talk to each other.  However,
        JavaScript running in web browsers is hampered by security
        restrictions that prevent code running on one website from
        accessing data stored or served on another.
-
        Before you start hacking, make sure you understand the limitations
        posed by cross-domain XMLHttpRequest.
-
        On the bright side, some platforms use JavaScript as their
        language, but enable the programmer to access other web sites.
        Examples include Google Gadgets, and Microsoft Vista Sidebar.
@@ -417,13 +411,11 @@ let INFO = xml`
 
     /* An OAuth message is represented as an object like this:
        {method: "GET", action: "http://server.com/path", parameters: ...}
-
        The parameters may be either a map {name: value, name2: value2}
        or an Array of name-value pairs [[name, value], [name2, value2]].
        The latter representation is more powerful: it supports parameters
        in a specific sequence, or several parameters with the same name;
        for example [["a", 1], ["b", 2], ["a", 3]].
-
        Parameter names and values are NOT percent-encoded in an object.
        They must be encoded before transmission and decoded after reception.
        For example, this message object:
@@ -434,7 +426,6 @@ let INFO = xml`
        Note that the object "x y" is transmitted as x%20y.  To encode
        parameters, you can call OAuth.addToURL, OAuth.formEncode or
        OAuth.getAuthorization.
-
        This message object model harmonizes with the browser object model for
        input elements of an form, whose value property isn't percent encoded.
        The browser encodes each value before transmitting it. For example,
@@ -446,9 +437,7 @@ let INFO = xml`
        better, you can load this script from a URL whose query string contains
        an oauth_timestamp parameter, whose value is a current Unix timestamp.
        For example, when generating the enclosing document using PHP:
-
        <script src="oauth.js?oauth_timestamp=<?=time()?>" ...
-
        Another option is to call OAuth.correctTimestamp with a Unix timestamp.
      */
 
@@ -2041,7 +2030,6 @@ let INFO = xml`
             }
           }, "").replace(/(?:\r\n|[\r\n])[ \t]*/g, " ") +
           '</table>';
-
       window.Services.console.logStringMessage(html);
       liberator.echo(new TemplateXML(html), true);
     }, // }}}
@@ -2070,7 +2058,6 @@ let INFO = xml`
             }
           };
         }
-
         // TODO ユーザのリストが返ってきますが、タイムラインとして表示します。
         if (res.length > 0) {
           Twittperator.showTL(res.map(Utils.fixStatusObject).map(konbuArt));
@@ -2081,15 +2068,11 @@ let INFO = xml`
     }, // }}}
     sourceScriptFile: function(file) { // {{{
       let self = this;
-
       if (self._plugins.loaded[Utils.getPluginNameFromFile(file)])
         return true;
-
       let stdScript = liberator.plugins.contexts[file.path];
-
       try {
         let script = Script(file);
-
         script.__context__.require = function (names) {
           if (!(names instanceof Array))
             names = [names];
@@ -2103,13 +2086,10 @@ let INFO = xml`
               throw "Not found twittperator plugin: " + name;
           });
         };
-
         let uri = services.get("io").newFileURI(file);
         let suffix = '?' + encodeURIComponent(services.get("UUID").generateUUID().toString());
-
         liberator.loadScript(uri.spec + suffix, script);
         self._plugins.loaded[Utils.getPluginNameFromFile(file)] = script;
-
       } finally {
         if (stdScript)
           liberator.plugins[stdScript.NAME] = stdScript;
@@ -2141,15 +2121,12 @@ let INFO = xml`
   let Completers = (function() { // {{{
     function rt(st)
       ("retweeted_status" in st ? st.retweeted_status : st);
-
     function removeNewLine(text)
       text.replace(/\r\n|[\r\n]/g, ' ');
-
     function setTimelineCompleter(context) { // {{{
       function statusObjectFilter(item)
         let (desc = item.description)
           (this.match(desc.user.screen_name) || this.match(desc.text));
-
       context.compare = void 0;
       context.createRow = function(item, highlightGroup) {
         if (highlightGroup === "CompTitle") {
@@ -2157,7 +2134,6 @@ let INFO = xml`
               <li highlight="CompDesc">${item}&#160;</li>
           </div>`;
         }
-
         let [value, st] = item.item;
         if (st.user) {
           return xml`<div highlight="CompItem" style="white-space: nowrap">
@@ -2174,18 +2150,15 @@ let INFO = xml`
           </div>`;
         }
       };
-
       context.filters = [statusObjectFilter];
       context.title = "Entry";
     } // }}}
-
     function makeTimelineCompleter(completer) { // {{{
       return function (context, args) {
         setTimelineCompleter(context);
         return completer(context, args);
       }
     } // }}}
-
     function completer(generator, nort) {
       let getHistory = nort ? function() history
                             : function() history.map(rt);
@@ -2204,7 +2177,6 @@ let INFO = xml`
         return makeTimelineCompleter(completer);
       }
     }
-
     return {
       name:
         completer(function(s) [s.user.screen_name, s]),
@@ -2242,7 +2214,6 @@ let INFO = xml`
   let SubCommand = function(init) { // {{{
     if (!(init.completer instanceof Array))
       init.completer = [init.completer];
-
     return {
       __proto__: init,
       get expr() {
@@ -2346,10 +2317,8 @@ let INFO = xml`
             let cont = (v && typeof v === "object") ? dtdd(v) : v;
             items += `<dt>${n}</dt><dd>${cont}</dd>`;
           }
-
           return `<dl>${items}</dl>`;
         }
-
         let m = arg.match(/^\d+/);
         if (!m)
           return;
@@ -2427,7 +2396,6 @@ let INFO = xml`
             showThread();
           }
         }
-
         Twittperator.echo("Start thread tracing..");
         let thread = [];
         getStatus(parseInt(arg), trace);
@@ -2465,12 +2433,10 @@ let INFO = xml`
       action: function(arg) startStreams(),
     }),
   ];
-
   SubCommands.add = function(subCmd) {
     this.push(subCmd);
     return;
   }; // }}}
-
   // アクセストークン取得前 {{{
   function preSetup() {
     commands.addUserCommand(["tw[ittperator]"], "Twittperator setup command",
@@ -2499,7 +2465,6 @@ let INFO = xml`
           return [cmd, m];
       }
     } // }}}
-
     function tailMatch(re, str) { // {{{
       let result, m;
       let head = 0;
@@ -2514,21 +2479,17 @@ let INFO = xml`
         result.index += head;
       return result;
     } // }}}
-
     function subCommandCompleter(context, args) { // {{{
       if (!args.literalArg.match(/^(\W|\S+\s)/)) {
         context.title = ["Sub Command", "Description"];
         context.completions = SubCommands.map(function({ command, description }) [command[0], description]);
         return;
       }
-
       let [subCmd, m] = findSubCommand(args.literalArg) || [];
       if (!subCmd)
         return;
-
       context.offset += m[0].length;
       let offset = context.offset;
-
       subCmd.completer.forEach(function (completer, index) {
         context.fork(
           "TwittperatorSubCommand" + index, 0, context,
@@ -2539,10 +2500,8 @@ let INFO = xml`
         );
       });
     } // }}}
-
     function commandCompelter(context, args) { // {{{
       let len = 0;
-
       let arg = args.literalArg.slice(0, context.caret);
       let m;
       if (m = arg.match(/^D\s+/)) {
@@ -2558,26 +2517,20 @@ let INFO = xml`
       } else if (m = tailMatch(/(^|\b|\s)@[^@\s]*$/, arg)) {
         (m.index === 0 ? Completers.name_id(Predicates.notMine) : Completers.atname(Predicates.notMine))(context, args);
       }
-
       if (m)
         len = m.index + m[1].length;
-
       context.title = "Entry";
       context.offset += len;
       // XXX 本文でも検索できるように、@ はなかったことにする
       context.filter = context.filter.replace(/^[@#]/, "");
-
       context.incomplete = false;
     } // }}}
-
     commands.addUserCommand(["tw[ittperator]"], "Twittperator command", // {{{
       function(args) {
         let bang = args.bang;
         let arg = args.literalArg;
-
         if (!arg)
           return Twittperator.showUserTimeline();
-
         if (args.bang) {
           let [subCmd] = findSubCommand(arg) || [];
           if (subCmd)
@@ -2598,19 +2551,15 @@ let INFO = xml`
             setting.autoStatusUpdate &&
             !getting &&
             (!lastTime || ((lastTime + setting.statusValidDuration * 1000) < now));
-
           let completer = args.bang ? subCommandCompleter : commandCompelter;
           let matches = args.bang || args.literalArg.match(/(RT\s+|)@|#|^D\s+/);
-
           if (!matches)
             return;
-
           context.fork(
             "TwittperatorCommand", 0, context,
             function(context) {
               context.incomplete = doGet;
               context.hasitems = !doGet;
-
               if (doGet) {
                 getting = true;
                 lastTime = now;
@@ -2627,7 +2576,6 @@ let INFO = xml`
         }
       }, true); // }}}
   } // }}}
-
   // Initialization {{{
   let setting =
     let (gv = liberator.globalVariables) ({
@@ -2647,39 +2595,30 @@ let INFO = xml`
       lang: (gv.twittperator_lang || ''),
       getAPIURL: function (path) (/^https?\:\/\//.test(path) ? path : this.apiURLBase + path)
     });
-
   let statusRefreshTimer;
-
   let history = __context__.Tweets;
   if (!history)
     history = __context__.Tweets = Store.get("history", []);
-
   let friends = __context__.Friends;
   if (!friends)
     friends = __context__.Friends = Store.get("friends", []);
-
   let tw = new TwitterOauth(Store);
-
   // ストリーム
   let ChirpUserStream = Stream({ name: 'chirp stream', url: "https://userstream.twitter.com/2/user.json" });
   let TrackingStream = Stream({ name: 'tracking stream', url: "https://stream.twitter.com/1/statuses/filter.json" });
-
   let startStreams = function () {
     ChirpUserStream.resetRestartCount();
     TrackingStream.resetRestartCount();
-
     if (setting.useChirp){
       if(setting.allReplies)
         ChirpUserStream.start({"replies":"all"});
       else
         ChirpUserStream.start();
     }
-
     let trackWords = setting.trackWords || Store.get("trackWords");
     if (trackWords)
       TrackingStream.start({track: trackWords});
   };
-
   // 公開オブジェクト
   __context__.OAuth = tw;
   __context__.ChirpUserStream = ChirpUserStream;
@@ -2691,11 +2630,8 @@ let INFO = xml`
   __context__.SubCommand = SubCommand;
   __context__.SubCommands = SubCommands;
   __context__.Completers = Completers;
-
   Twittperator.loadPlugins();
-
   liberator.registerObserver('enter', startStreams);
-
   __context__.onUnload = function() {
     Store.set("history", history);
     Store.set("friends", friends);
@@ -2703,7 +2639,5 @@ let INFO = xml`
     TrackingStream.stop();
   };
   // }}}
-
 })();
-
 // vim: sw=2 ts=2 et fdm=marker:
