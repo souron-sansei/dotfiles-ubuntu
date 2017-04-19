@@ -49,3 +49,7 @@ syntax enable
 
 runtime! options.rc.vim
 runtime! keymap.rc.vim
+
+" for pyenv
+let g:python_host_prog = $PYENV_ROOT . '/shims/python2'
+let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
