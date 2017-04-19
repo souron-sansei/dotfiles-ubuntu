@@ -27,8 +27,8 @@ if = "has('nvim')"
 on_ft = 'python'
 hook_source = '''
 if has('unix')
-  let g:python_host_prog = '/usr/bin/python2'
-  let g:python3_host_prog = '/usr/bin/python3'
+  let g:python_host_prog = $PYENV_ROOT . '/shims/python2'
+  let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
 endif
 if has('mac')
   let g:python_host_prog = '/usr/local/bin/python2'
