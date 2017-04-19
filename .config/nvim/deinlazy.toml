@@ -154,3 +154,8 @@ on_ft = 'vue'
 [[plugins]]
 repo = 'davidhalter/jedi-vim'
 on_ft = 'python'
+on_source = 'vim-pyenv'
+
+[[plugins]]
+repo = 'lambdalisue/vim-pyenv'
+on_ft = 'python'
