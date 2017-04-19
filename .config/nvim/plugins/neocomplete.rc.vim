@@ -31,6 +31,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
+
 " jedi for python
 autocmd FileType python setlocal omnifunc=jedi#completions
 let g:jedi#completions_enabled = 0
