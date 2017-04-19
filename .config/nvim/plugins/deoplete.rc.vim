@@ -25,7 +25,3 @@ call deoplete#custom#set('_', 'converters', [
 \ ])
 
 let g:deoplete#enable_camel_case = 1
-
-" jedi for python
-let g:python_host_prog = $PYENV_ROOT . '/shims/python2'
-let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
