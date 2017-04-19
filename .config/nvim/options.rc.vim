@@ -64,3 +64,7 @@ let g:loaded_matchit           = 1
 "
 autocmd MyAutoCmd FileType fortran set colorcolumn=5
 autocmd MyAutoCmd FileType cpp set ts=4 sts=0 sw=4 noet
+
+" for jedi
+set completeopt-=preview
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
