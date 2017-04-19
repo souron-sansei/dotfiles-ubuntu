@@ -150,3 +150,7 @@ on_ft = 'swift'
 [[plugins]]
 repo = 'posva/vim-vue'
 on_ft = 'vue'
+
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+on_ft = 'python'
