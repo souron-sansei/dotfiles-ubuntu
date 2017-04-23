@@ -75,6 +75,7 @@ fi
 alias ls='ls -G'
 # PATH
 PATH=$PATH:~/.bin
+PATH=$PATH:~/.local/bin
 # no beep
 setopt nolistbeep
 # useful functions
