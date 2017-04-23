@@ -65,6 +65,10 @@ let g:loaded_matchit           = 1
 autocmd MyAutoCmd FileType fortran set colorcolumn=5
 autocmd MyAutoCmd FileType cpp set ts=4 sts=0 sw=4 noet
 
+" for pyenv
+let g:python_host_prog = $PYENV_ROOT . '/shims/python2'
+let g:python3_host_prog = $PYENV_ROOT . '/shims/python3'
+
 " for jedi
 set completeopt-=preview
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
