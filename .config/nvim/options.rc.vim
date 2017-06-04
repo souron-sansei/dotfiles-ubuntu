@@ -11,7 +11,7 @@ set smartindent
 set cindent
 set noswapfile
 set fileencodings=utf-8,euc-jp,ucs-bom,iso-2022-jp,sjis,cp932,latin1
-set nowrap
+set wrap
 if has('nvim')
   set clipboard+=unnamedplus
   if has('mouse')
